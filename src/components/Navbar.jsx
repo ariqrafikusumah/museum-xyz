@@ -36,10 +36,6 @@ function Navbar() {
                                     <li className='px-5 py-3 cursor-pointer hover:bg-indigo-500 hover:rounded-lg font-bold text-gray-900 hover:text-white duration-500 justify-end'>Dashboard
                                     </li>
                                 </Link>
-                                <Link className='' to="/knn-data">
-                                    <li className='px-5 py-3 cursor-pointer hover:bg-indigo-500 hover:rounded-lg font-bold text-gray-900 hover:text-white duration-500 justify-end'>KNN Data
-                                    </li>
-                                </Link>
                                 <Link className='' to="/prediksi">
                                     <li className='px-5 py-3 cursor-pointer hover:bg-indigo-500 hover:rounded-lg font-bold text-gray-900 hover:text-white duration-500 justify-end'>Prediksi
                                     </li>

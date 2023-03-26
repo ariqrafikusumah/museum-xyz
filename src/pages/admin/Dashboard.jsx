@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../../components/Navbar'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function Dashboard() {
-    const [data, setData] = useState([]);
+    const [metadata, setmetaData] = useState(null);
     useEffect(() => {
-        async function getUser() {
+        async function getFosil() {
             try {
-                const response = await axios.get('http://localhost:1337/api/fosils');
-                console.log(response.data.meta.pagination);
-                setData(response.data.meta.pagination);
+                const response = await axios.get(`http://192.168.0.100:3300/fosil`)
+                const data = response.data;
+                setmetaData(data.metadata)
             } catch (error) {
                 console.log(error);
             }
         }
-        getUser()
+        getFosil()
     }, []);
     return (
         <>
@@ -26,40 +27,44 @@ function Dashboard() {
                     </div>
                     <div className='p-3'>
                         <div className='grid lg:grid-cols-3 md:grid-cols-1 gap-2'>
-                            <div className='border inline-flex p-4 rounded-lg bg-indigo-300 font-bold shadow-xl'>
-                                <div className='block'>
-                                    <div className='w-full p-3 text-2xl text-white'>
-                                        Batuan
-                                    </div>
-                                    {data.map((item) => (
+                            {/* <div className='border inline-flex p-4 rounded-lg bg-indigo-300 font-bold shadow-xl'>
+                                <Link className='block w-full' to='/knn-data-fosil'>
+                                    <div className='block'>
+                                        <div className='w-full p-3 text-2xl text-white'>
+                                            Batuan
+                                        </div>
                                         <>
                                             <div className='w-full p-3'>
-                                                Jumlah : {item.total}
+                                                Jumlah :
                                             </div>
                                         </>
-                                    ))}
-                                </div>
-                            </div>
+                                    </div>
+                                </Link>
+                            </div> */}
                             <div className='border inline-flex p-4 rounded-lg bg-indigo-300 font-bold shadow-xl'>
-                                <div className='block'>
-                                    <div className='w-full p-3 text-2xl text-white'>
-                                        Fosil
+                                <Link className='block w-full' to='/knn-data-fosil'>
+                                    <div className='block w-full'>
+                                        <div className='w-full p-3 text-2xl text-white'>
+                                            Fosil
+                                        </div>
+                                        <div className='w-full p-3'>
+                                            Jumlah : {metadata && metadata.totalData}
+                                        </div>
                                     </div>
-                                    <div className='w-full p-3'>
-                                        Jumlah : 123
-                                    </div>
-                                </div>
+                                </Link>
                             </div>
-                            <div className='border inline-flex p-4 rounded-lg bg-indigo-300 font-bold shadow-xl'>
-                                <div className='block'>
-                                    <div className='w-full p-3 text-2xl text-white'>
-                                        Sumber Daya Geologi
+                            {/* <div className='border inline-flex p-4 rounded-lg bg-indigo-300 font-bold shadow-xl'>
+                                <Link className='block w-full' to='/knn-data-fosil'>
+                                    <div className='block'>
+                                        <div className='w-full p-3 text-2xl text-white'>
+                                            Sumber Daya Geologi
+                                        </div>
+                                        <div className='w-full p-3'>
+                                            Jumlah :
+                                        </div>
                                     </div>
-                                    <div className='w-full p-3'>
-                                        Jumlah : 123
-                                    </div>
-                                </div>
-                            </div>
+                                </Link>
+                            </div> */}
                         </div>
                     </div>
                 </div>
