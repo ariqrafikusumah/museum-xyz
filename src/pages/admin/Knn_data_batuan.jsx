@@ -1,15 +1,13 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import Datafosil from '../../components/Data_fosil';
-import Navbar from '../../components/Navbar';
-
-function KNNdatbatuan() {
+import { Datafosil, Navbar }  from './components'
+function KNNdatabatuan() {
     const [dataFosil, setdataFosil] = useState ([]);
 
     useEffect(() => {
         async function getFosil() {
             try {
-                const response = await axios.get(`http://192.168.0.100:3300/fosil`)
+                const response = await axios.get(`http://localhost:3300/fosil`)
                 setdataFosil(response.data)
             } catch (error) {
                 console.log(error.data)
@@ -36,4 +34,4 @@ function KNNdatbatuan() {
     )
 }
 
-export default KNNdatbatuan
+export default KNNdatabatuan

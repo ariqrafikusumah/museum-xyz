@@ -1,6 +1,5 @@
 import React from 'react'
-import KNNClassifier from '../../components/Klasifikasi_data'
-import Navbar from '../../components/Navbar'
+import { KNNClassifier, Navbar }  from './components'
 
 function Prediksi() {
     return (

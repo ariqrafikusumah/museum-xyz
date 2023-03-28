@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Navbar from '../../components/Navbar'
+import { Navbar }  from './components'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -8,7 +8,7 @@ function Dashboard() {
     useEffect(() => {
         async function getFosil() {
             try {
-                const response = await axios.get(`http://192.168.0.100:3300/fosil`)
+                const response = await axios.get(`http://localhost:3300/fosil`)
                 const data = response.data;
                 setmetaData(data.metadata)
             } catch (error) {

@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import Datafosil from '../../components/Data_fosil';
-import Navbar from '../../components/Navbar';
+import { Navbar,Datafosil }  from './components'
 
 function KNNdatasdg() {
     const [dataFosil, setdataFosil] = useState ([]);
@@ -9,7 +8,7 @@ function KNNdatasdg() {
     useEffect(() => {
         async function getFosil() {
             try {
-                const response = await axios.get(`http://192.168.0.100:3300/fosil`)
+                const response = await axios.get(`http://localhost:3300/fosil`)
                 setdataFosil(response.data)
             } catch (error) {
                 console.log(error.data)
